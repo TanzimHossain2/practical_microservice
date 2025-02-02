@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,3 +7,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Inventory {
+  id        String    @id @default(cuid())
+  sku       String    @unique
+  productId String    @unique
+  quantity  Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  histories History[]
+}
+
+enum ActionType {
+  IN
+  OUT
+}
+
+model History {
+  id             String     @id @default(cuid())
+  actionType     ActionType
+  quantityChange Int
+  lastQuantity   Int
+  newQuantity    Int
+  inventory      Inventory  @relation(fields: [inventoryId], references: [id], onDelete: Cascade)
+  inventoryId    String
+  createdAt      DateTime   @default(now())
+}

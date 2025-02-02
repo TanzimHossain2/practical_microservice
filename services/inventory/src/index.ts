@@ -4,6 +4,7 @@ import express from 'express';
 
 import chalk from 'chalk';
 import morgan from 'morgan';
+import router from './routes/route';
 
 dotenv.config();
 
@@ -11,9 +12,10 @@ const app = express();
 const port = process.env.PORT || 4002;
 const servicename = process.env.SERVICENAME || 'inventory-service';
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 app.use(morgan('dev'));
+app.use(router);
 
 app.get('/health', (_req, res) => {
   res.status(200).json({ status: 'UP' });
