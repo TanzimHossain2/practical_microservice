@@ -6,7 +6,7 @@ export const updateInventory = async (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<void> => {
+) => {
   try {
     // check if the inventory exists
     const { id } = req.params;
@@ -15,15 +15,13 @@ export const updateInventory = async (
     });
 
     if (!inventory) {
-      res.status(404).json({ message: 'Inventory not found' });
-      return;
+      return res.status(404).json({ message: 'Inventory not found' });
     }
 
     // update the inventory
     const parsedBody = InventoryUpdateDTOSchema.safeParse(req.body);
     if (!parsedBody.success) {
-      res.status(400).json(parsedBody.error.errors);
-      return;
+      return res.status(400).json(parsedBody.error.errors);
     }
 
     const { actionType, quantity } = parsedBody.data;
@@ -41,8 +39,7 @@ export const updateInventory = async (
     } else if (actionType === 'OUT') {
       newQuantity -= quantity;
     } else {
-      res.status(400).json({ message: 'Invalid action type' });
-      return;
+      return res.status(400).json({ message: 'Invalid action type' });
     }
 
     // update the inventory
@@ -70,4 +67,3 @@ export const updateInventory = async (
     next(error);
   }
 };
-

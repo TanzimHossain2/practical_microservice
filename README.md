@@ -5,6 +5,7 @@ This repository contains a practical implementation of microservices architectur
 ## Microservices
 
 - **Inventory Service** - Manages product inventory.
+- **Product Service** - Manages product details.
 
 ## Architecture Diagram
 

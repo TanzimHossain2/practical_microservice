@@ -5,7 +5,7 @@ export const getInventoryDetails = async (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<void> => {
+) => {
   try {
     const { id } = req.params;
     const inventory = await prisma.inventory.findUnique({
@@ -20,8 +20,7 @@ export const getInventoryDetails = async (
     });
 
     if (!inventory) {
-      res.status(404).json({ message: 'Inventory not found' });
-      return;
+      return res.status(404).json({ message: 'Inventory not found' });
     }
 
     res.status(200).json(inventory);
@@ -29,4 +28,3 @@ export const getInventoryDetails = async (
     next(err);
   }
 };
-
