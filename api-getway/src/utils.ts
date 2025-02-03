@@ -1,7 +1,7 @@
-import { Express, Request, Response } from 'express';
-import config from './config.json';
 import axios from 'axios';
 import chalk from 'chalk';
+import { Express, Request, Response } from 'express';
+import config from './config.json';
 export const configureRoutes = (app: Express) => {
   Object.entries(config.services).forEach(([_name, service]) => {
     const hostname = service.url;
@@ -12,48 +12,47 @@ export const configureRoutes = (app: Express) => {
         const endpoint = `/api${route.path}`;
 
         app[method](endpoint, handler);
-        
       });
     });
   });
 };
 
-
-export const createHandler = (hostname: string, path: string, method: string) => {
-  return async (req: Request, res: Response)=>{
+export const createHandler = (
+  hostname: string,
+  path: string,
+  method: string
+) => {
+  return async (req: Request, res: Response) => {
     try {
-
-
       let url = `${hostname}${path}`;
-    
+
       // replace path params
-      req.params && Object.keys(req.params).forEach(param =>{
-        url = url.replace(`:${param}`, req.params[param]);
-      })
+      req.params &&
+        Object.keys(req.params).forEach((param) => {
+          url = url.replace(`:${param}`, req.params[param]);
+        });
 
-
-      const {data} = await axios({
+      const { data } = await axios({
         method,
         url,
         data: req.body,
         headers: {
-          origin: 'http://localhost:8081'
-        }
-      })
-  
+          origin: 'http://localhost:8081',
+        },
+      });
+
       res.json(data);
     } catch (error) {
-      if (error instanceof axios.AxiosError){
+      if (error instanceof axios.AxiosError) {
         return res
-					.status(error.response?.status || 500)
-					.json(error.response?.data);
+          .status(error.response?.status || 500)
+          .json(error.response?.data);
       }
 
       console.log(chalk.red(error));
 
       return res.status(500).json({ message: 'Internal server error' });
     }
-  }
-}
-
+  };
+};
 

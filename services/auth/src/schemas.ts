@@ -14,3 +14,18 @@ export const UserLoginSchema = z.object({
 });
 
 export type UserLogin = z.infer<typeof UserLoginSchema>;
+
+export const AccessTokenSchema = z.object({
+  accessToken: z.string(),
+});
+
+export const EmailVerificationSchema = z.object({
+  email: z.string().email(),
+  code: z.string(),
+});
+
+
+export const DecodedTokenSchema = z.object({
+  userId: z.string(),
+  role: z.string().optional(),
+})
