@@ -1,0 +1,1 @@
+export const AUTH_SERVICE = process.env.AUTH_SERVICE || 'http://localhost:4003';

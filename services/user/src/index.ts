@@ -9,8 +9,8 @@ import ProductRouter from './routes';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 4001;
-const servicename = process.env.SERVICENAME || 'inventory-service';
+const port = process.env.PORT || 4004;
+const servicename = process.env.SERVICENAME || 'User-Service';
 
 app.use(express.json());
 app.use(cors());
@@ -22,7 +22,7 @@ app.get('/health', (_req, res) => {
 
 // CORS middleware
 // app.use((req, res, next) => {
-//   const allowedOrigins = ['http://localhost:8081', 'http://127.0.0.1:8081'];
+//   const allowedOrigins = ['http://localhost:8081', 'http://127.0.0.1:8080'];
 //   const origin = req.headers.origin ?? '';
 
 //   if (allowedOrigins.includes(origin)) {

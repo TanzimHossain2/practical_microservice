@@ -6,6 +6,11 @@ This repository contains a practical implementation of microservices architectur
 
 - **Inventory Service** - Manages product inventory.
 - **Product Service** - Manages product details.
+- **Inventory Service** - Manages product inventory.
+- **Auth Service** - Manages user authentication.
+- **User Service** - Manages user details.
+- **Email Service** - Sends email notifications. Use MailHog to view sent emails.
+- **API Gateway** - Routes requests to the appropriate service.
 
 ## Architecture Diagram
 
@@ -31,4 +36,3 @@ docker-compose up -d
 ```
 
 Then, navigate to the specific service directory and follow its setup instructions.
-
