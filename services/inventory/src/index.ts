@@ -21,19 +21,17 @@ app.get('/health', (_req, res) => {
 });
 
 // CORS middleware
-app.use((req, res, next) => {
-  const allowedOrigins = ['http://localhost:8081', 'http://127.0.0.1:8080'];
-  const origin = req.headers.origin ?? '';
+// app.use((req, res, next) => {
+//   const allowedOrigins = ['http://localhost:8081', 'http://127.0.0.1:8081'];
+//   const origin = req.headers.origin ?? '';
 
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-    next();
-  } else {
-    res.status(403).json({ error: 'Forbidden' });
-  }
-
- 
-});
+//   if (allowedOrigins.includes(origin)) {
+//     res.setHeader('Access-Control-Allow-Origin', origin);
+//     next();
+//   } else {
+//     res.status(403).json({ error: 'Forbidden' });
+//   }
+// });
 
 app.use(router);
 

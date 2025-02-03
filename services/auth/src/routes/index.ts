@@ -3,7 +3,7 @@ import { Router } from 'express';
 
 const router = Router();
 
-router.post('/auth/registration', (req, res, next) => {
+router.post('/auth/register', (req, res, next) => {
   userRegistration(req, res, next);
 });
 

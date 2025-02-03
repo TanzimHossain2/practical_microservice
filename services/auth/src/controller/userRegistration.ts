@@ -55,8 +55,7 @@ export const userRegistration = async (
         name: true,
       },
     });
-    console.log(chalk.green('User created successfully. Check your email for verification code'));
-
+ 
     // Create the User Profile cby calling the user profile service
 
     try {
@@ -94,7 +93,7 @@ export const userRegistration = async (
     }
 
     return res.status(201).json({
-      message: 'User created successfully',
+      message: 'User created successfully. Check your email for verification code',
       user,
     });
   } catch (err) {
