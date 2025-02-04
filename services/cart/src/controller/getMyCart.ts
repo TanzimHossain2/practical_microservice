@@ -12,6 +12,7 @@ export const getMyCart = async (
       return res.status(200).json({ items: [] });
     }
 
+    // check if the session exists
     const session = await redis.exists(`session:${cartSessionId}`);
 
     if (!session) {
@@ -21,12 +22,15 @@ export const getMyCart = async (
 
     const cartItems = await redis.hgetall(`cart:${cartSessionId}`);
 
-    if (!cartItems) {
+    if (Object.keys(cartItems).length === 0) {
       return res.status(200).json({ items: [] });
     }
 
     const items = Object.keys(cartItems).map((key) => {
-      return JSON.parse(cartItems[key]);
+      return {
+        productId: key,
+        ...JSON.parse(cartItems[key]),
+      }
     });
 
     res.status(200).json({ items });
