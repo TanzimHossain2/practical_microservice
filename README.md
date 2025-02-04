@@ -11,6 +11,8 @@ This repository contains a practical implementation of microservices architectur
 - **User Service** - Manages user details.
 - **Email Service** - Sends email notifications. Use MailHog to view sent emails.
 - **API Gateway** - Routes requests to the appropriate service.
+- **Order Service** - Manages orders.
+- **Cart Service** - Manages user carts.
 
 ## Architecture Diagram
 
