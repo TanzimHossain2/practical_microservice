@@ -4,6 +4,7 @@ import express from 'express';
 
 import chalk from 'chalk';
 import morgan from 'morgan';
+import './receiver';
 import ProductRouter from './routes';
 
 dotenv.config();

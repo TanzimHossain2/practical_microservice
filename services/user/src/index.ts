@@ -1,6 +1,7 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
+import './receiver';
 
 import chalk from 'chalk';
 import morgan from 'morgan';

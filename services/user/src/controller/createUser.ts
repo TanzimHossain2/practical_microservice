@@ -1,30 +1,26 @@
-import { Request, Response, NextFunction } from 'express';
 import { UserCreateSchema } from '@/schemas';
-import prisma from '@/prisma';
+import { createUserService } from '@/service/userService';
+import { NextFunction, Request, Response } from 'express';
 
-export const createUser = async (req: Request, res: Response, next: NextFunction) => {
-	try {
-		// Validate the request body
-		const parsedBody = UserCreateSchema.safeParse(req.body);
-		if (!parsedBody.success) {
-			return res.status(400).json({ message: parsedBody.error.errors });
-		}
+export const createUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    // Validate the request body
+    const parsedBody = UserCreateSchema.safeParse(req.body);
+    if (!parsedBody.success) {
+      return res.status(400).json({ message: parsedBody.error.errors });
+    }
 
-		// check if the authUserId already exists
-		const existingUser = await prisma.user.findUnique({
-			where: { authUserId: parsedBody.data.authUserId },
-		});
-		if (existingUser) {
-			return res.status(400).json({ message: 'User already exists' });
-		}
+    // Call the service to handle user creation
+    const user = await createUserService(parsedBody.data);
 
-		// Create a new user
-		const user = await prisma.user.create({
-			data: parsedBody.data,
-		});
-
-		return res.status(201).json(user);
-	} catch (error) {
-		next(error);
-	}
+    // Return the response with the newly created user
+    return res.status(201).json(user);
+  } catch (error) {
+    next(error);
+  }
 };
+

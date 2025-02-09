@@ -1,8 +1,7 @@
-import { EMAIL_SERVICE } from '@/config';
 import prisma from '@/prisma';
+import { sendToQueue } from '@/queue';
 import { EmailVerificationSchema } from '@/schemas';
 import { AccountStatus } from '@prisma/client';
-import axios from 'axios';
 import { NextFunction, Request, Response } from 'express';
 
 export const verifyEmail = async (
@@ -56,18 +55,15 @@ export const verifyEmail = async (
     });
 
     // send Success email
-
-    try {
-      await axios.post(`${EMAIL_SERVICE}/emails/send`, {
+    sendToQueue(
+      'auth-email-service',
+      JSON.stringify({
         recipient: user.email,
         subject: 'Email Verified',
         body: 'Your email has been verified successfully',
-        source: 'verify-email',
-      });
-    } catch (err) {
-      console.error(`[VerifyEmail] Error sending verification email: ${err}`);
-    }
-
+        source: 'verify email',
+      })
+    );
     return res.status(200).json({ message: 'Email verified successfully' });
   } catch (err) {
     next(err);

@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0" version="26.0.10" pages="4">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="26.0.10" pages="5">
   <diagram name="Base " id="7Dvglg0BKGGC-8FBPeNH">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -3044,6 +3044,42 @@
         </mxCell>
         <mxCell id="4RZGYai2AnC5waTb-GFC-18" value="Release inventory when key get expired" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1155" y="1910" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="9-H92l8DuUbyfMhCho-o" name="Rabbit MQ">
+    <mxGraphModel dx="1963" dy="1130" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jKIVvpEq2QqThhFSy31C-9" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="190" y="50" width="480" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="jKIVvpEq2QqThhFSy31C-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="jKIVvpEq2QqThhFSy31C-9" source="jKIVvpEq2QqThhFSy31C-1" target="jKIVvpEq2QqThhFSy31C-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jKIVvpEq2QqThhFSy31C-1" value="Order Service" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="jKIVvpEq2QqThhFSy31C-9">
+          <mxGeometry y="101.53846153846155" width="108.67924528301887" height="55.38461538461539" as="geometry" />
+        </mxCell>
+        <mxCell id="jKIVvpEq2QqThhFSy31C-2" value="Broker" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="jKIVvpEq2QqThhFSy31C-9">
+          <mxGeometry x="199.24528301886792" y="92.3076923076923" width="69.76939203354299" height="69.76939203354299" as="geometry" />
+        </mxCell>
+        <mxCell id="jKIVvpEq2QqThhFSy31C-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="jKIVvpEq2QqThhFSy31C-9" source="jKIVvpEq2QqThhFSy31C-4" target="jKIVvpEq2QqThhFSy31C-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="326.0377358490566" y="129.23076923076923" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jKIVvpEq2QqThhFSy31C-4" value="Cart" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="jKIVvpEq2QqThhFSy31C-9">
+          <mxGeometry x="371.3207547169811" width="108.67924528301887" height="55.38461538461539" as="geometry" />
+        </mxCell>
+        <mxCell id="jKIVvpEq2QqThhFSy31C-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="jKIVvpEq2QqThhFSy31C-9" source="jKIVvpEq2QqThhFSy31C-5" target="jKIVvpEq2QqThhFSy31C-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="326.0377358490566" y="129.23076923076923" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jKIVvpEq2QqThhFSy31C-5" value="Email" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="jKIVvpEq2QqThhFSy31C-9">
+          <mxGeometry x="371.3207547169811" y="184.6153846153846" width="108.67924528301887" height="55.38461538461539" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

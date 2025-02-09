@@ -1,14 +1,10 @@
 # Email Service
 
-The email service is responsible for sending emails to users. use node mailer to send emails & mail Hog.
+The email service is responsible for sending emails to users. Use NodeMailer to send emails and MailHog to view sent emails.
 
-## Setup
+We use RabbitMQ to connect Email Service with other services. When a user places an order, the Order Service sends a message to the Email Service to send an email notification. If the email fails to send, the message is requeued for later processing.
 
-Run docker-compose up to start the mailhog service.
+## Service Dependencies
 
-```bash
-docker-compose up
-```
-
-## Usage
+- **RabbitMQ** - Message broker for communication between services.
 

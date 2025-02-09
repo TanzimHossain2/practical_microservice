@@ -1,5 +1,6 @@
-import { CART_SERVICE, EMAIL_SERVICE, PRODUCT_SERVICE } from '@/config';
+import { CART_SERVICE, PRODUCT_SERVICE } from '@/config';
 import prisma from '@/prisma';
+import { sendToQueue } from '@/queue';
 import { CartItemSchema, OrderSchema } from '@/schemas';
 import axios from 'axios';
 import { NextFunction, Request, Response } from 'express';
@@ -73,24 +74,44 @@ export const checkout = async (
       },
     });
 
-    console.log('Order created: ', order.id);
+    console.log('Order created:', order.id);
 
-    // clear cart
-    await axios.get(`${CART_SERVICE}/cart/clear`, {
-      headers: {
-        'x-cart-session-id': parsedBody.data.cartSessionId,
-      },
-    });
+    sendToQueue(
+      'order-email-service',
+      JSON.stringify({
+        recipient: parsedBody.data.userEmail,
+        subject: 'Order Confirmation',
+        body: `Thank you for your order. Your order id is ${order.id}. Your order total is $${grandTotal}`,
+        source: 'OrderService',
+      })
+    );
 
-    // send email
-    await axios.post(`${EMAIL_SERVICE}/emails/send`, {
-      recipient: parsedBody.data.userEmail,
-      subject: 'Order Confirmation',
-      body: `Thank you for your order. Your order id is ${order.id}. Your order total is $${grandTotal}`,
-      source: 'Checkout',
-    });
+    sendToQueue(
+      'clear-cart',
+      JSON.stringify({ cartSessionId: parsedBody.data.cartSessionId })
+    );
 
     res.status(201).json({ message: 'Order created successfully' });
+
+    /**
+     * Old Way of sending email and clearing cart
+     *  
+     * 
+    // clear cart
+    // await axios.get(`${CART_SERVICE}/cart/clear`, {
+    //   headers: {
+    //     'x-cart-session-id': parsedBody.data.cartSessionId,
+    //   },
+    // });
+
+    // send email
+    // await axios.post(`${EMAIL_SERVICE}/emails/send`, {
+    //   recipient: parsedBody.data.userEmail,
+    //   subject: 'Order Confirmation',
+    //   body: `Thank you for your order. Your order id is ${order.id}. Your order total is $${grandTotal}`,
+    //   source: 'Checkout',
+    // });
+    */
   } catch (err) {
     next(err);
   }
