@@ -92,26 +92,6 @@ export const checkout = async (
     );
 
     res.status(201).json({ message: 'Order created successfully' });
-
-    /**
-     * Old Way of sending email and clearing cart
-     *  
-     * 
-    // clear cart
-    // await axios.get(`${CART_SERVICE}/cart/clear`, {
-    //   headers: {
-    //     'x-cart-session-id': parsedBody.data.cartSessionId,
-    //   },
-    // });
-
-    // send email
-    // await axios.post(`${EMAIL_SERVICE}/emails/send`, {
-    //   recipient: parsedBody.data.userEmail,
-    //   subject: 'Order Confirmation',
-    //   body: `Thank you for your order. Your order id is ${order.id}. Your order total is $${grandTotal}`,
-    //   source: 'Checkout',
-    // });
-    */
   } catch (err) {
     next(err);
   }

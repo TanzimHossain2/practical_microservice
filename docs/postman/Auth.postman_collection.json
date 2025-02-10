@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "abb9162b-5ede-413f-8ef0-16c4dd1221cb",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26596315"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"User registration should return user data\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"\r",
+							"    let responseJson = pm.response.json();\r",
+							"    let requestBody = pm.request.body.raw ? JSON.parse(pm.request.body.raw) : {};\r",
+							"\r",
+							"    pm.expect(responseJson).to.have.property(\"user\");\r",
+							"    pm.expect(responseJson.user).to.have.property(\"email\");\r",
+							"    pm.expect(responseJson.user).to.have.property(\"id\");\r",
+							"\r",
+							"    // Store email & password from request (since API doesn't return password)\r",
+							"    pm.collectionVariables.set(\"user_email\", requestBody.email);\r",
+							"    pm.collectionVariables.set(\"user_password\", requestBody.password);\r",
+							"\r",
+							"    // Store user ID from response\r",
+							"    pm.collectionVariables.set(\"user_id\", responseJson.user.id);\r",
+							"\r",
+							"    console.log(\"Stored Email:\", requestBody.email);\r",
+							"    console.log(\"Stored Password:\", requestBody.password);\r",
+							"    console.log(\"Stored User ID:\", responseJson.user.id);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{$randomPassword}}\",\r\n    \"name\": \"{{$randomFullName}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{auth_base_url}}/auth/register",
+					"host": [
+						"{{auth_base_url}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "400 Missing",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{auth_base_url}}/auth/registration",
+							"host": [
+								"{{auth_base_url}}"
+							],
+							"path": [
+								"auth",
+								"registration"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "330"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"14a-gLHZDzb0lSxWZiAdNXilwxICtQU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 03 Feb 2025 07:07:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"code\": \"invalid_type\",\n            \"expected\": \"string\",\n            \"received\": \"undefined\",\n            \"path\": [\n                \"email\"\n            ],\n            \"message\": \"Required\"\n        },\n        {\n            \"code\": \"invalid_type\",\n            \"expected\": \"string\",\n            \"received\": \"undefined\",\n            \"path\": [\n                \"password\"\n            ],\n            \"message\": \"Required\"\n        },\n        {\n            \"code\": \"invalid_type\",\n            \"expected\": \"string\",\n            \"received\": \"undefined\",\n            \"path\": [\n                \"name\"\n            ],\n            \"message\": \"Required\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "verify-email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"User registration should return user data\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"\r",
+							"    let responseJson = pm.response.json();\r",
+							"    let requestBody = pm.request.body.raw ? JSON.parse(pm.request.body.raw) : {};\r",
+							"\r",
+							"    pm.expect(responseJson).to.have.property(\"message\", \"User created successfully\");\r",
+							"    pm.expect(responseJson).to.have.property(\"user\");\r",
+							"    pm.expect(responseJson.user).to.have.property(\"email\");\r",
+							"    pm.expect(responseJson.user).to.have.property(\"id\");\r",
+							"\r",
+							"    // Store email & password from request (since API doesn't return password)\r",
+							"    pm.collectionVariables.set(\"user_email\", requestBody.email);\r",
+							"    pm.collectionVariables.set(\"user_password\", requestBody.password);\r",
+							"\r",
+							"    // Store user ID from response\r",
+							"    pm.collectionVariables.set(\"user_id\", responseJson.user.id);\r",
+							"\r",
+							"    console.log(\"Stored Email:\", requestBody.email);\r",
+							"    console.log(\"Stored Password:\", requestBody.password);\r",
+							"    console.log(\"Stored User ID:\", responseJson.user.id);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{user_email}}\",\r\n    \"code\": \"697122\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{auth_base_url}}/auth/verify-email",
+					"host": [
+						"{{auth_base_url}}"
+					],
+					"path": [
+						"auth",
+						"verify-email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Login should return an access token\", function () {\r",
+							"    pm.response.to.have.status(200); \r",
+							"\r",
+							"    let responseJson = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseJson).to.have.property(\"accessToken\"); \r",
+							"\r",
+							"    // Store the token in collection variables\r",
+							"    pm.globals.set(\"access_token\", responseJson.accessToken);\r",
+							"\r",
+							"    console.log(\"Stored Access Token:\", responseJson.accessToken);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{user_email}}\",\r\n    \"password\": \"{{user_password}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{auth_base_url}}/auth/login",
+					"host": [
+						"{{auth_base_url}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "400",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{user_email}}\",\r\n    \"password\": \"{{user_password}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{auth_base_url}}/auth/login",
+							"host": [
+								"{{auth_base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 03 Feb 2025 08:00:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid credentials\"\n}"
+				}
+			]
+		},
+		{
+			"name": "verify-token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accessToken\": \"{{access_token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{auth_base_url}}/auth/verify-token",
+					"host": [
+						"{{auth_base_url}}"
+					],
+					"path": [
+						"auth",
+						"verify-token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "user_email",
+			"value": ""
+		},
+		{
+			"key": "user_password",
+			"value": ""
+		},
+		{
+			"key": "user_id",
+			"value": ""
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}

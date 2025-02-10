@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "8afc45bc-e48f-41a5-ac82-835a1584540c",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26596315"
+	},
+	"item": [
+		{
+			"name": "get by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{user_base_url}}/users/cm6oqabs00003ily84sofkf90?field=authUserId",
+					"host": [
+						"{{user_base_url}}"
+					],
+					"path": [
+						"users",
+						"cm6oqabs00003ily84sofkf90"
+					],
+					"query": [
+						{
+							"key": "field",
+							"value": "authUserId"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

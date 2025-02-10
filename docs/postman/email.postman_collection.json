@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "26b783cb-3cf4-4e88-895d-b7cd81b2525b",
+		"name": "email",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26596315"
+	},
+	"item": [
+		{
+			"name": "Send",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{mail_url}}/emails/send",
+					"host": [
+						"{{mail_url}}"
+					],
+					"path": [
+						"emails",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Emails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{mail_url}}/emails",
+					"host": [
+						"{{mail_url}}"
+					],
+					"path": [
+						"emails"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "mail_url",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

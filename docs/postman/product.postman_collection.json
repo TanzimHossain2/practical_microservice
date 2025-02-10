@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "371be35d-c51d-41ac-a406-d3cd81e1aad9",
+		"name": "product",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26596315"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"sku\": \"sl-01\",  \r\n   \"name\":\"Phone\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{product_base_url}}/products",
+					"host": [
+						"{{product_base_url}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "400 Missing",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{product_base_url}}/products",
+							"host": [
+								"{{product_base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "252"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"fc-UzL7YYsM7OwuZZ3r02BsOde/dhs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 12:59:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid request body\",\n    \"errors\": [\n        {\n            \"code\": \"invalid_type\",\n            \"expected\": \"string\",\n            \"received\": \"undefined\",\n            \"path\": [\n                \"sku\"\n            ],\n            \"message\": \"Required\"\n        },\n        {\n            \"code\": \"invalid_type\",\n            \"expected\": \"string\",\n            \"received\": \"undefined\",\n            \"path\": [\n                \"name\"\n            ],\n            \"message\": \"Required\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "201 Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"sku\": \"sl-01\",  \r\n   \"name\":\"Phone\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{product_base_url}}/products",
+							"host": [
+								"{{product_base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "229"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e5-UCePw6c1+zVck/nQnczXEeTZQSM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 13:04:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"cm6nmvjb40000ilawojlqojh8\",\n    \"sku\": \"sl-01\",\n    \"name\": \"Phone\",\n    \"description\": null,\n    \"price\": 0,\n    \"inventoryId\": \"cm6nmvjeq0000ili8ltee6qz6\",\n    \"status\": \"DRAFT\",\n    \"createdAt\": \"2025-02-02T13:04:09.088Z\",\n    \"updatedAt\": \"2025-02-02T13:04:09.088Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{product_base_url}}/products",
+					"host": [
+						"{{product_base_url}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "404 Not",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/products",
+							"host": [
+								"{{product_base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"16-W2umooxQyv3HbO+vFt32UHgXv4Q\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 12:59:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Not Found \"\n}"
+				},
+				{
+					"name": "200 Product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/products",
+							"host": [
+								"{{product_base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "126"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7e-l0X3E6Kp1YhCOZqjos1CmGYvC1I\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 13:19:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": \"cm6nmvjb40000ilawojlqojh8\",\n            \"sku\": \"sl-01\",\n            \"name\": \"Phone\",\n            \"price\": 0,\n            \"inventoryId\": \"cm6nmvjeq0000ili8ltee6qz6\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "product by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{product_base_url}}/products/cm6p65j3i0000ilv4xc99xiow",
+					"host": [
+						"{{product_base_url}}"
+					],
+					"path": [
+						"products",
+						"cm6p65j3i0000ilv4xc99xiow"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/products/cm6nmvjb40000ilawojlqojh8",
+							"host": [
+								"{{product_base_url}}"
+							],
+							"path": [
+								"products",
+								"cm6nmvjb40000ilawojlqojh8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "268"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10c-pk1Q2hcIAdFA9zMVT3HKQ3xwp9I\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 13:20:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"cm6nmvjb40000ilawojlqojh8\",\n    \"sku\": \"sl-01\",\n    \"name\": \"Phone\",\n    \"description\": null,\n    \"price\": 0,\n    \"inventoryId\": \"cm6nmvjeq0000ili8ltee6qz6\",\n    \"status\": \"DRAFT\",\n    \"createdAt\": \"2025-02-02T13:04:09.088Z\",\n    \"updatedAt\": \"2025-02-02T13:04:09.237Z\",\n    \"stock\": 0,\n    \"stockStatus\": \"Out of stock\"\n}"
+				},
+				{
+					"name": "404",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/products/cm6nmvjb40000ilawojlqojh8x",
+							"host": [
+								"{{product_base_url}}"
+							],
+							"path": [
+								"products",
+								"cm6nmvjb40000ilawojlqojh8x"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1f-Zkgaox/LmBaRs1Ofkuc8bu8COvo\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 13:20:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Product not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Poduct",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\": 200\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{product_base_url}}/products/cm6p74yah0001ilv4fucfd02l",
+					"host": [
+						"{{product_base_url}}"
+					],
+					"path": [
+						"products",
+						"cm6p74yah0001ilv4fucfd02l"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/products/cm6nmvjb40000ilawojlqojh8",
+							"host": [
+								"{{product_base_url}}"
+							],
+							"path": [
+								"products",
+								"cm6nmvjb40000ilawojlqojh8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "268"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10c-pk1Q2hcIAdFA9zMVT3HKQ3xwp9I\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 13:20:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"cm6nmvjb40000ilawojlqojh8\",\n    \"sku\": \"sl-01\",\n    \"name\": \"Phone\",\n    \"description\": null,\n    \"price\": 0,\n    \"inventoryId\": \"cm6nmvjeq0000ili8ltee6qz6\",\n    \"status\": \"DRAFT\",\n    \"createdAt\": \"2025-02-02T13:04:09.088Z\",\n    \"updatedAt\": \"2025-02-02T13:04:09.237Z\",\n    \"stock\": 0,\n    \"stockStatus\": \"Out of stock\"\n}"
+				},
+				{
+					"name": "404",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/products/cm6nmvjb40000ilawojlqojh8x",
+							"host": [
+								"{{product_base_url}}"
+							],
+							"path": [
+								"products",
+								"cm6nmvjb40000ilawojlqojh8x"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1f-Zkgaox/LmBaRs1Ofkuc8bu8COvo\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 13:20:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Product not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "product Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{product_base_url}}/health",
+					"host": [
+						"{{product_base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/health",
+							"host": [
+								"{{product_base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "15"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f-RQ8OySFd+KR+AvtJ7qImjtT0D/0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 13:00:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"UP\"\n}"
+				}
+			]
+		}
+	]
+}

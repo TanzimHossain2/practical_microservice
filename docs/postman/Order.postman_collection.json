@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "d6611580-108d-4ab7-ae8a-166bd84f2acf",
+		"name": "Order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26596315"
+	},
+	"item": [
+		{
+			"name": "health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{order_base_url}}/health",
+					"host": [
+						"{{order_base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"{{user_id}}\",\r\n    \"userName\": \"{{$randomUserName}}\",\r\n    \"userEmail\": \"{{$randomEmail}}\",\r\n    \"cartSessionId\":\" {{cartSessionId}}\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{order_base_url}}/orders/checkout",
+					"host": [
+						"{{order_base_url}}"
+					],
+					"path": [
+						"orders",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Oders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{order_base_url}}/orders",
+					"host": [
+						"{{order_base_url}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Oder by Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{order_base_url}}/orders/cm6qgfu080000iloswzo5zbg7",
+					"host": [
+						"{{order_base_url}}"
+					],
+					"path": [
+						"orders",
+						"cm6qgfu080000iloswzo5zbg7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
