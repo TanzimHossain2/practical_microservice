@@ -33,7 +33,7 @@ services:
     ports:
       - '5050:80'
       - '5051:443'
-  
+
   mailhog:
     image: mailhog/mailhog
     container_name: mailhog
@@ -47,17 +47,25 @@ services:
     image: redis/redis-stack:latest
     container_name: redis-stack
     ports:
-      - "6379:6379"
-      - "8002:8001"
+      - '6379:6379'
+      - '8002:8001'
     volumes:
       - redis-stack:/var/lib/redis-stack
     environment:
       - REDIS_ARGS=--save 900 1
 
+  rabbitmq:
+    image: rabbitmq:3.8-management
+    ports:
+      - '5672:5672' # RabbitMQ main port
+      - '15672:15672' # RabbitMQ management UI port
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
   # ------------------------------------------
 
 volumes:
   postgres:
   mailhog:
   redis-stack:
+  rabbitmq_data:
 

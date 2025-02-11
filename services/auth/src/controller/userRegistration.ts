@@ -1,10 +1,8 @@
-import { EMAIL_SERVICE, USER_SERVICE } from '@/config';
 import prisma from '@/prisma';
+import { sendToQueue } from '@/queue';
 import { UserCreateSchema } from '@/schemas';
 import { generateVerificationCode } from '@/utils/generateCode';
-import axios from 'axios';
 import bcrypt from 'bcryptjs';
-import chalk from 'chalk';
 import { NextFunction, Request, Response } from 'express';
 
 export const userRegistration = async (
@@ -55,18 +53,16 @@ export const userRegistration = async (
         name: true,
       },
     });
- 
-    // Create the User Profile cby calling the user profile service
 
-    try {
-      await axios.post(`${USER_SERVICE}/users`, {
-        authUserId: user.id,
+    // Create the User Profile. This will be handled by the user-profile-service
+    sendToQueue(
+      'user-profile-service',
+      JSON.stringify({
+        userId: user.id,
         name: user.name,
         email: user.email,
-      });
-    } catch (err) {
-      console.error(`Error creating user profile: ${err}`);
-    }
+      })
+    );
 
     // Generate a verification code
     const code = generateVerificationCode();
@@ -80,20 +76,19 @@ export const userRegistration = async (
       },
     });
 
-    // Send the verification email
-    try {
-      await axios.post(`${EMAIL_SERVICE}/emails/send`, {
+    sendToQueue(
+      'auth-email-service',
+      JSON.stringify({
         recipient: user.email,
         subject: 'Verify Your Email Address',
         body: `Your verification code is ${code}`,
         source: 'user-registration',
-      });
-    } catch (err) {
-      console.error(`[userRegistration] Error sending verification email: ${err}`);
-    }
+      })
+    );
 
     return res.status(201).json({
-      message: 'User created successfully. Check your email for verification code',
+      message:
+        'User created successfully. Check your email for verification code',
       user,
     });
   } catch (err) {

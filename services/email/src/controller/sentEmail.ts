@@ -22,9 +22,6 @@ export const sendEmail = async (req: Request, res: Response, next: NextFunction)
       text: body,
     };
 
-    console.log(emailOption);
-    
-
     const { rejected } = await transporter.sendMail(emailOption);
 
     if (rejected.length) {

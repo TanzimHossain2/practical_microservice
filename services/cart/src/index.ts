@@ -6,6 +6,8 @@ import './events/onKeyExpires';
 import chalk from 'chalk';
 import morgan from 'morgan';
 import ProductRouter from './routes';
+import './reciver';
+
 
 dotenv.config();
 

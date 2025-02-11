@@ -1,0 +1,729 @@
+{
+	"info": {
+		"_postman_id": "94eecf5d-acf5-4d23-aa9f-81b28625e710",
+		"name": "Inventory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26596315"
+	},
+	"item": [
+		{
+			"name": "Stock",
+			"item": []
+		},
+		{
+			"name": "Inventory by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{inventory_base_url}}/inventories/cm6p65joc0000ilhksbu7zez1",
+					"host": [
+						"{{inventory_base_url}}"
+					],
+					"path": [
+						"inventories",
+						"cm6p65joc0000ilhksbu7zez1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventory_base_url}}/inventories/cm6nj974q0000ilk0k4jwrafbx",
+							"host": [
+								"{{inventory_base_url}}"
+							],
+							"path": [
+								"inventories",
+								"cm6nj974q0000ilk0k4jwrafbx"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "14"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e-B8GD6kWlxc4RMUREe2k5wnrjhtk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 11:23:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"quantity\": 5\n}"
+				},
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventory_base_url}}/inventories/cm6nj974q0000ilk0k4jwrafbx",
+							"host": [
+								"{{inventory_base_url}}"
+							],
+							"path": [
+								"inventories",
+								"cm6nj974q0000ilk0k4jwrafbx"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21-G/luMD54sy4AwTAUgnIpPnojAtU\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 11:27:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Inventory not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{inventory_base_url}}/inventories/cm6p65joc0000ilhksbu7zez1/details",
+					"host": [
+						"{{inventory_base_url}}"
+					],
+					"path": [
+						"inventories",
+						"cm6p65joc0000ilhksbu7zez1",
+						"details"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventory_base_url}}/inventories/cm6nj974q0000ilk0k4jwrafb/details",
+							"host": [
+								"{{inventory_base_url}}"
+							],
+							"path": [
+								"inventories",
+								"cm6nj974q0000ilk0k4jwrafb",
+								"details"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "562"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"232-kZHEpceHHLeYPqh9fJ58SZPvKZ4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 11:29:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"cm6nj974q0000ilk0k4jwrafb\",\n    \"sku\": \"test_sku13xx\",\n    \"productId\": \"test_id-233x\",\n    \"quantity\": 15,\n    \"createdAt\": \"2025-02-02T11:22:47.804Z\",\n    \"updatedAt\": \"2025-02-02T11:25:38.282Z\",\n    \"histories\": [\n        {\n            \"id\": \"cm6njcui20002ilk0j7axrfee\",\n            \"actionType\": \"IN\",\n            \"quantityChange\": 10,\n            \"lastQuantity\": 5,\n            \"newQuantity\": 15,\n            \"inventoryId\": \"cm6nj974q0000ilk0k4jwrafb\",\n            \"createdAt\": \"2025-02-02T11:25:38.282Z\"\n        },\n        {\n            \"id\": \"cm6nj974x0001ilk04ufzcw0d\",\n            \"actionType\": \"IN\",\n            \"quantityChange\": 5,\n            \"lastQuantity\": 0,\n            \"newQuantity\": 5,\n            \"inventoryId\": \"cm6nj974q0000ilk0k4jwrafb\",\n            \"createdAt\": \"2025-02-02T11:22:47.804Z\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "404 Not",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inventory_base_url}}/inventories/cm6nj974q0000ilk0k4jwrafb/details",
+							"host": [
+								"{{inventory_base_url}}"
+							],
+							"path": [
+								"inventories",
+								"cm6nj974q0000ilk0k4jwrafb",
+								"details"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21-G/luMD54sy4AwTAUgnIpPnojAtU\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 11:30:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Inventory not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Inventory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\":\"test_id-233xx\",\r\n    \"sku\": \"test_sku13xxx\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{inventory_base_url}}/inventories",
+					"host": [
+						"{{inventory_base_url}}"
+					],
+					"path": [
+						"inventories"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":\"test_id-1\",\r\n    \"quantity\": 2,\r\n    \"sku\": \"test_sku\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/inventory",
+							"host": [
+								"{{inventory_base_url}}"
+							],
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "47"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2f-nsqeXIa5IXLq0I5jyfXu+MxPkuM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 09:56:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"cm6ng5r4f0000il484mdbe1ob\",\n    \"quantity\": 2\n}"
+				},
+				{
+					"name": "400 Invalid type",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":\"test_id-1\",\r\n    \"quantity\": \"2\",\r\n    \"sku\": \"test_sku\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/inventory",
+							"host": [
+								"{{inventory_base_url}}"
+							],
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "140"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"8c-OgDJlGF5632KAnsH5K4uJOgzMT8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 09:56:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": [\n        {\n            \"code\": \"invalid_type\",\n            \"expected\": \"number\",\n            \"received\": \"string\",\n            \"path\": [\n                \"quantity\"\n            ],\n            \"message\": \"Expected number, received string\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "409 Conflict",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":\"test_id-233\",\r\n    \"quantity\": 2,\r\n    \"sku\": \"test_sku13\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/inventory",
+							"host": [
+								"{{inventory_base_url}}"
+							],
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "85"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"55-sLx3Z4W0rht+v90Twz8MAAXOFSU\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 10:04:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Conflict\",\n    \"message\": \"The following unique fields are already in use: sku.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Inventory Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{inventory_base_url}}/health",
+					"host": [
+						"{{inventory_base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_base_url}}/health",
+							"host": [
+								"{{product_base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "15"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f-RQ8OySFd+KR+AvtJ7qImjtT0D/0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 13:00:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"UP\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\":40,\r\n    \"actionType\": \"IN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{inventory_base_url}}/inventories/cm6p65joc0000ilhksbu7zez1",
+					"host": [
+						"{{inventory_base_url}}"
+					],
+					"path": [
+						"inventories",
+						"cm6p65joc0000ilhksbu7zez1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\":10,\r\n    \"actionType\": \"IN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/inventories/cm6nj974q0000ilk0k4jwrafb",
+							"host": [
+								"{{inventory_base_url}}"
+							],
+							"path": [
+								"inventories",
+								"cm6nj974q0000ilk0k4jwrafb"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"30-XVUiR4MMMFUwfonyuIpYdmof3F8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 11:25:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"cm6nj974q0000ilk0k4jwrafb\",\n    \"quantity\": 15\n}"
+				},
+				{
+					"name": "400 Missing",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventory_base_url}}/inventories/cm6nj974q0000ilk0k4jwrafb",
+							"host": [
+								"{{inventory_base_url}}"
+							],
+							"path": [
+								"inventories",
+								"cm6nj974q0000ilk0k4jwrafb"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "225"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e1-ay+TKdpGcxSp3+x9pnLoSm+UNPw\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Feb 2025 11:26:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"code\": \"invalid_type\",\n        \"expected\": \"number\",\n        \"received\": \"undefined\",\n        \"path\": [\n            \"quantity\"\n        ],\n        \"message\": \"Required\"\n    },\n    {\n        \"expected\": \"'IN' | 'OUT'\",\n        \"received\": \"undefined\",\n        \"code\": \"invalid_type\",\n        \"path\": [\n            \"actionType\"\n        ],\n        \"message\": \"Required\"\n    }\n]"
+				}
+			]
+		}
+	]
+}

@@ -1,7 +1,4 @@
-import { INVENTORY_URL } from '@/config';
-import prisma from '@/prisma';
-import axios from 'axios';
-import chalk from 'chalk';
+import { getProductDetailsService } from '@/service';
 import { NextFunction, Request, Response } from 'express';
 
 export const getProductDetails = async (
@@ -10,58 +7,15 @@ export const getProductDetails = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.params;
-    const product = await prisma.product.findUnique({
-      where: { id },
-    });
-
-    if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
+    if (!req.params.id) {
+      throw { status: 400, message: 'Product id is required' };
     }
+    const productDetails = await getProductDetailsService(req.params.id);
 
-    if (product.inventoryId === null) {
-      const { data: inventory } = await axios.post(
-        `${INVENTORY_URL}/inventories`,
-        {
-          productId: product.id,
-          sku: product.sku,
-        }
-      );
-
-      console.log(chalk.green('Inventory created successfully'), inventory.id);
-
-      await prisma.product.update({
-        where: { id: product.id },
-        data: {
-          inventoryId: inventory.id,
-        },
-      });
-
-      console.log(
-        chalk.green('Product updated successfully with inventory id'),
-        inventory.id
-      );
-
-      return res.status(200).json({
-        ...product,
-        inventoryId: inventory.id,
-        stock: inventory.quantity || 0,
-        stockStatus: inventory.quantity > 0 ? 'In stock' : 'Out of stock',
-      });
-    }
-
-    // fetch inventory
-    const { data: inventory } = await axios.get(
-      `${INVENTORY_URL}/inventories/${product.inventoryId}`
-    );
-
-    return res.status(200).json({
-      ...product,
-      stock: inventory.quantity || 0,
-      stockStatus: inventory.quantity > 0 ? 'In stock' : 'Out of stock',
-    });
-  } catch (err) {
-    next(err);
+    res.status(200).json(productDetails);
+  } catch (error) {
+    console.error('Error retrieving product details:', error);
+    next(error);
   }
 };
 

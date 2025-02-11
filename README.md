@@ -13,6 +13,7 @@ This repository contains a practical implementation of microservices architectur
 - **API Gateway** - Routes requests to the appropriate service.
 - **Order Service** - Manages orders.
 - **Cart Service** - Manages user carts.
+- **RabbitMQ** - Message broker for communication between services.
 
 ## Architecture Diagram
 

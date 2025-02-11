@@ -8,3 +8,5 @@ export const transporter = nodemailer.createTransport({
 export const DEFAULT_SENDER =
   process.env.DEFAULT_SENDER_EMAIL || 'admin@example.com';
 
+export const QUEUE_URL = process.env.QUEUE_URL || 'amqp://localhost';
+
